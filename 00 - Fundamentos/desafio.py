@@ -50,9 +50,9 @@ def criar_usuario(usuarios):
         print("O usuario já existe com esse CPF:  *")
     return
 
-nome = input(Informe o nome completo: *)
-data_nascimento = input(Informe a data de nascimento(dd-mm-aaaa): *)
-endereco = input(Informe o endereco(logradouro, nro - bairro - cidade/sigla estado): *)
+    nome = input(Informe o nome completo: *)
+    data_nascimento = input(Informe a data de nascimento(dd-mm-aaaa): *)
+    endereco = input(Informe o endereco(logradouro, nro - bairro - cidade/sigla estado): *)
 
 usuarios.append({"nome": nome, "data_nascimento": data_nascimento, "cpf": cpf, "endereco": endereco})
 print("Usuario criado com sucesso!")
@@ -82,14 +82,14 @@ def listar_contas(contas):
 
 
 def main():
-LIMITE_SAQUES = 3
-AGENCIA = '0001'
-saldo = 0
-limite = 500
-extrato = ""
-numero_saques = 0
-usuarios = []
-contas = []
+    LIMITE_SAQUES = 3
+    AGENCIA = '0001'
+    saldo = 0
+    limite = 500
+    extrato = ""
+    numero_saques = 0
+    usuarios = []
+    contas = []
 
 while True:
 
