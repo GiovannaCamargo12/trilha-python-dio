@@ -1,3 +1,6 @@
+From abc import ABC, obstractclassmethod, obstractproperty
+From datetime import datetime
+
 def menu ():
 menu = """
 
@@ -12,126 +15,172 @@ menu = """
 return imput (textwrap.dedent(menu))
 
 
-def deposita (saldo, valor, extrato, /):
-    if valor > 0:
-       saldo += valor
-       extrato += f"Deposito: R$ {valor:.2f}"
-        print("----DEPOSITO REALIZADO COM SUCESSO!----")
-    else:
-        print("----VALOR INVALIDO----")
+class cliente:
+    def__init__(self, endereco)
+        self.endereco = endereco
+        self.contas = []
 
-return saldo,extrato
+     def realizar_trasacao(self, conta, trasacao):
+         trasacao.registrar(conta)
+      
+       def adicionar_conta(self, conta):
+           self.contas.append(conta)
+ 
+class pessoaFisica(cliente):
+    def__init__(self, nome, data_nascimento, cpf, endereco):
+        super().def__init__(enderco) data_nascimento,
+            self.nome= nome
+            self.data_nascimento =  data_nascimento
+            self.cpf = cpf
 
-def sacar(*, saldo, valor, extrato, limite, numero_saque , limite_saque):
-    if excedeu_saldo:
-        print("Saldo Insulficiente")
-    elif excedeu_limite:
-        print("Saque foi Excedido")
-    elif excedeu_saques:
-        print("O saque maximo foi Excedido")
-    elif valor > 0:
-        saldo -= valor
-        extrato += "Saque: R$ {valor:.2f} /n"
-        numero_saque ++ 1
-        print("Saque Realizado com Sucesso!")
+class conta:
+     def__init__(self, numero, clientes):
+            self._saldo= 0
+            self._numero =  numero
+            self._agencia = "0001"
+            self._cliente= cliente
+            self._historico = historico() 
+     @classmethod
+      def nova _conta(self, numero, clientes):   
+            return cls(numero, clientes)
+      @property
+      def saldo(self):
+              return self.saldo
+      @property
+      def numero(self):
+              return self.numero
 
-    else:
-        print("O valor é invalido")
+      @property
+       def numero(self):
+          return self.numero
 
-    return saldo, extrato
+       @property
+       def agencia(self):
+          return self._agencia
 
-def exibir_extrato (saldo, /, extrato):
+        @property
+        def cliente(self):
+          return self.cliente
 
-def criar_usuario(usuarios):
-    cpf = input(Informe o CPF(somente numeros): *)
-    usuario = filtrar_usuario(cpf, usuarios)
+        @property
+        def historico(self):
+          return self.historico
 
-    if usuarios:
-        print("O usuario já existe com esse CPF:  *")
-    return
+        def sacar(self):
+         self.saldo = self.saldo
+         execedeu_saldo = valor > saldo
 
-    nome = input(Informe o nome completo: *)
-    data_nascimento = input(Informe a data de nascimento(dd-mm-aaaa): *)
-    endereco = input(Informe o endereco(logradouro, nro - bairro - cidade/sigla estado): *)
+                if  execedeu_saldo
+                    print("Voce não tem saldo suficiente")
+                
+                elif  valor > 0:
+                    self._saldo -= valor
+                     print("Saque realizado com sucesso!")
 
-usuarios.append({"nome": nome, "data_nascimento": data_nascimento, "cpf": cpf, "endereco": endereco})
-print("Usuario criado com sucesso!")
+                 else  
+                     print("O valor informado é invalido!")
 
-def filtrar_usuario(cpf, usuarios):
-    usuarios_filtrados =  [usuario for usuario in usuarios if usuario["cpf" == cpf]
-    return  usuarios_filtrados[0] if usuarios_filtrados else None
+                 return false 
+            
+          def depositar(self, valor):
+                  if valor > 0:
+                      self._saldo += valor
+                       print("Deposito depositado com sucesso!")
+                  else:
+                       print("O valor informado é invalido!")
+                      return false 
+           return true
+                    
 
-def criar_contas(agencia, numero_conta, usuarios):
-    cpf = input("Inform o CPF do usário")
-    usuario = filtrar_usuario(cpf, usuarios)
+class contaCorrente(conta):
+    def__init__(self, numero, cliente, limite=500, limite_saques=3 ):
+        super().__init__(numero, cliente)
+        self.limite = limite 
+        self.limite_saques =  limite_saques
 
-    if usuario:
-        print("---conta criada com sucesso!----")
-        return{"agencia": agencia, "numero_conta: numero_conta, "usuario": usuario}
-
-    print("Usuário não encontrado, digitação incorreta!") 
-def listar_contas(contas):
-    for conta in contas:
-        linha + f***\
-            agência:/t{conta['agencia']}
-            c/c:\t\t{conta['numero_conta']}
-            Titular:\t{conta['usuario']['nome']}
-   ***
-    print('*'+ 100)
-    print(textwrap.dedent(linha))
-
-
-def main():
-    LIMITE_SAQUES = 3
-    AGENCIA = '0001'
-    saldo = 0
-    limite = 500
-    extrato = ""
-    numero_saques = 0
-    usuarios = []
-    contas = []
-
-while True:
-
-    opcao = input(menu)
-f opcao == "1":
-        valor = obter_valor("Informe o valor do depósito: ")             
-        saldo, extrato = depositar(saldo, valor, extrato)
-
-    elif opcao == "2":
-        valor = obter_valor("Informe o valor do saque: ")
-        saldo, extrato, numero_saques, saques = sacar(
-            saldo=saldo,
-            valor=valor,
-            extrato=extrato,
-            limite=limite,
-            numero_saques=numero_saques,
-            limite_saques=LIMITE_SAQUES,
-            saques=saques,
+    def sacar(self, valor):
+        numero_saques = len (
+        [trasacao for trasacao in self.historico.trasacoes if trasacoes ["tipo"] == saque.__name__] 
         )
 
-    elif opcao == "3":
-        exibir_extrato(saldo, extrato=extrato)
+        exedeu_limite = valor > self.limite
+        exedeu_saques = numero_saques > self.
 
-    elif opcao == "3":
-        exibir_historico_saques(saques)
+        if exedeu_limite:
+             print("O valor informado exede o limite!")
 
-    elif opcao == "4":
-        criar_usuario(usuarios)
+        elif exedeu_saques:
+             print("Exedeu o limite maximo de saques!")
+        else:
+             return super().sacar(valor)
+        return false 
 
-    elif opcao == "5":
-        numero_conta = len(contas) + 1
-        conta = criar_conta(AGENCIA, numero_conta, usuarios)
-
-        if conta:
-            contas.append(conta)
-
-    elif opcao == "5":
-        listar_contas(contas)
-
-    elif opcao == "7":
-        break
-
-    else:
-        print("Operação inválida, por favor selecione novamente a operação desejada.")
+    def __str__(self):
+        return f***/
+            Agencia:\t{self.agencia}
+            C/C:\t{self.numero}
+            titular:\t{self.cliente.nome}
+        ***
+                
    
+class historico:
+      def__init__(self):
+            self>_transacoes = []
+      
+       @property
+       def trasacoes(self):
+          return self._trasacoes
+
+       def adicionar_trasacoes(self, trasacao):
+           self._trasacoes.append (
+                "tipo": trasacoes.__class__.__name__,
+                "valor": trasacoes.valor,
+                "data": datatime.now()strtime("id-%n-%y %M:%s"),
+             )
+        
+
+)
+
+           
+class trasacao(ABC):
+     @property
+     @abstrctproperty
+     def valor(self):
+        pass
+
+    @abstractclassmethod
+    def resgistrar(self, conta):
+         pass
+
+         
+
+class Saque(trasacao):
+    def__init__(self, valor):
+        self._valor = valor 
+
+      @property
+      def valor(self):
+          return self._valor
+
+      def resgistrar(self, conta):
+          sucesso_trasacao = conta.sacar(self, sacar)
+
+          if  sucesso_trasacao:
+              conta.historico.adicionar_trasacao(self)
+
+
+class deposito(trasacao):
+    def__init__(self, valor):
+        self._valor = valor 
+
+      @property
+      def valor(self):
+          return self._valor
+
+      def resgistrar(self, valor):
+          sucesso_deposito = conta.depositar(self, valor)
+
+          if  sucesso_deposito:
+              conta.historico.adicionar_deposito(self)
+
+    
